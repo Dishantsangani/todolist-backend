@@ -11,13 +11,14 @@ app.use(express.json());
 // DB Conected
 mongoose
   .connect(
-    "mongodb+srv://devsmi168:dishant@todosclouster.zzatr.mongodb.net/?retryWrites=true&w=majority&appName=todosclouster"
+    "mongodb+srv://devsmi168:dishant@todosclouster.zzatr.mongodb.net/test?retryWrites=true&w=majority&appName=todosclouster",
+    { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => {
-    console.log("Database Connected");
+    console.log("Connected to MongoDB Atlas!");
   })
   .catch((err) => {
-    console.log("Database Error", err);
+    console.error("Error connecting to MongoDB Atlas:", err);
   });
 
 // // UserSchema
@@ -94,6 +95,4 @@ app.delete("/delete/:id", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server Is Started in ${PORT}`);
-});
+app.listen(PORT, () => {});
